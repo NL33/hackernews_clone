@@ -46,7 +46,7 @@ class Link < ActiveRecord::Base
     result
   end
 
-  private
+private
 
   def put_in_http
     regex = /http/
