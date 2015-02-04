@@ -1,0 +1,11 @@
+<ul><hr>
+<% comment.comments.each do |comment| %>
+     <li><%= link_to comment.comment, edit_link_comment_path(@link, comment) %>&nbsp;&nbsp;&nbsp;
+      <%= link_to "(edit)", edit_link_comment_path(@link, comment) %>
+      <%= link_to "(delete)", comment_comment_path(@link, comment), :method => 'delete' %>
+      <%= link_to "(comment)", new_comment_comment_path(comment) %> 
+      <%= render 'comments/comments', :comment => comment %>
+      </li>
+<% end %>
+</ul>
+    <%# the ":comment => comment" here refers to the subject of the partial. That partial uses comment.comments.each do |comment|.  The ":comment => comment" refers to the comment at the beginning of this loop statement--tells the system what comment that is. %>

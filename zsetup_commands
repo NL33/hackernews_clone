@@ -1,0 +1,61 @@
+open postgresql
+$ rails new rails_bus_timetable -d postgresql –T
+
+confirm:
+	config/application.rb does not contain: config.action_controller.permit_all_parameters = true 
+
+	app/controllers/application_controller.rb: includes protect_from_forgery with: :exception [protect against csrf]
+
+*config/database.yml:
+
+development:   
+  adapter: postgresql   
+  database: rails_hackernews_clone_development    
+
+test:
+  adapter: postgresql   
+  database: rails_hackernews_clone_test
+
+open postgres
+
+$ rake db:create
+
+update gemfile
+
+$ bundle install
+
+$ rails generate rspec:install
+
+*Bootstrap
+stylesheets/application.css: change to css.scss (for sass).  Add:
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+[@import "[any other scss files for styling]";]
+
+javascripts/application.js: Add:
+//= require bootstrap-sprockets
+
+Flash Messages:
+views/layouts/application.html.erb:
+    <% if flash[:notice] %>
+      <div class="alert alert-info">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+*Migration
+
+$ rails generate migration create_links   
+$ rails generate migration create_comments
+$ rails generate migration AddPolymorphismToComment 
+
+[examples of rollback, remove, and add:	
+	$ rake db:rollback VERSION=20150121004709 (delete file first; also can use STEP = 2)
+	$ rails generate migration RemoveRecipie_IdFromRecipesTags recipie_id:integer
+	$ rails generate migration AddRecipe_IdToRecipesTags recipe_id:integer]

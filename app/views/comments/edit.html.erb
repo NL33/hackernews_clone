@@ -1,0 +1,12 @@
+<h1> Edit Comment </h1>
+
+<h1><%= @link.name %></h1>
+
+<h3><a href="http://<%= @link.url %>"><%= @link.url %></a> </h3>
+
+<%= render 'form' %>
+
+</br>
+</br>
+<%= link_to "Return to Home Page", links_path, :class => "btn btn-default" %></br>
+</br>

@@ -1,0 +1,11 @@
+<% if @link != nil %>
+   <h1><%= @link.name %></h1>
+<% end %>
+
+<h3>Add your comment</h3>
+
+<div class = "Comment" >
+  <%= render 'form' %>
+</div>
+</br><%= link_to "Return to Home Page", links_path, :class => "btn btn-default" %></br>
+</br>

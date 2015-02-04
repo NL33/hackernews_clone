@@ -1,0 +1,24 @@
+<%= content_for(:title, "#{@link.name} | Hacker News") %>
+
+<h1><%= @link.name %></h1>
+
+<h3><a href="http://<%= @link.url %>"><%= @link.url %> </h3>
+<hr>
+<ul>
+ <% @link.comments.each do |comment| %>
+    <li><%= link_to comment.comment, edit_link_comment_path(@link, comment) %>&nbsp;&nbsp;&nbsp;
+      <%= link_to "(edit)", edit_link_comment_path(@link, comment) %>
+      <%= link_to "(delete)", comment_comment_path(@link, comment), :method => 'delete' %>
+      <%= link_to "(comment)", new_comment_comment_path(comment) %></br> <%# Note that this path is equivalent to: "/comments/#{comment.id}/comments/new". Also, the first comment noted above is the comment to the link. The partial rendered below renders comments to the the comment(s). %>
+       <%= render 'comments/comments', :comment => comment %> <%# the ":comment => comment" here refers to the subject of the partial. That partial uses comment.comments.each do |comment|.  The ":comment => comment" refers to the comment at the beginning of this loop statement. It links back to the comment that is the subject of the loop on this page. %> 	
+    </li>
+ <% end %>
+</ul>
+<%= link_to "Return to Home Page", links_path, :class => "btn btn-default" %></br>
+</br>
+
+
+
+
+</br>
+</br>

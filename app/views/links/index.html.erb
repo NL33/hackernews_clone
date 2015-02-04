@@ -1,0 +1,20 @@
+<%= content_for(:title, "HackerNews") %>
+
+<h2>Awesome Links</h2>
+
+<ul>
+  <% @links.each do |link| %>
+     
+    <h3><%= link_to "↑", link_path(link, "link[upvotes]" => (link.upvotes.to_i + 1)), :method => :patch %>
+     <%= link_to link.name, link_path(link) %></h3>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<%=link.url%>"><%= link.url %></a> 
+    
+    <p class='details'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link.upvotes %> upvotes | <%= link_to "#{link.comments.length} comments", link_path(link) %> | Created <%=link.age%> ago  | <%= link_to "Add a comment", new_link_comment_path(link), :class => "btn btn-default btn-sm" %> | <%= link_to "delete", link_path(link), :method => 'delete' %> </p>
+  <% end %></br>
+</ul>
+
+
+</br>
+</br>
+<%= link_to "New Link", new_link_path, :class => "btn btn-default" %>
+

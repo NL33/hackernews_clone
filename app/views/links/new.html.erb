@@ -1,0 +1,12 @@
+<%= content_for(:title, "Add a Link | HackerNews") %>
+
+<h1>Add a Link</h1>
+
+<%= render 'form' %>
+
+</br>
+</br>
+<%= link_to "Return to Home Page", links_path, :class => "btn btn-default" %></br>
+</br>
+
+<%= render("layouts/errors", :object => @link) %>

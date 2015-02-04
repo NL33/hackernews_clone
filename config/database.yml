@@ -1,0 +1,7 @@
+development:   
+  adapter: postgresql   
+  database: rails_hackernews_clone_development    
+
+test:
+  adapter: postgresql   
+  database: rails_hackernews_clone_test

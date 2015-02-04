@@ -1,0 +1,11 @@
+<%= render('layouts/errors', :object => @comment) %>
+
+<%= form_for [@object_of_comment, @comment] do |f| %>
+  <div class = "form-group">
+    <%= f.text_area :comment %>
+  </div>
+  <%= f.submit(:class => "btn btn-primary") %>
+<% end %>
+
+<%# NOTE: format: form_for [@object_of_comment, @comment] is because the @comment is nested within @object_of_comment.%>
+<%# NOTE: @object_of_comment here is to equal either @link (if the comment is being added to a link) or @comment (if the comment is being added to a comment). The determination is made in the new and create methods of the comment controller. %>
