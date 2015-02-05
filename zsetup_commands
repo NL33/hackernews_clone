@@ -1,5 +1,5 @@
 open postgresql
-$ rails new rails_bus_timetable -d postgresql –T
+$ rails new hackernews_clone -d postgresql –T
 
 confirm:
 	config/application.rb does not contain: config.action_controller.permit_all_parameters = true 
